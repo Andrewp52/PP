@@ -1,0 +1,14 @@
+.toolbar-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.profile-block button{
+  margin-right: 10px;
+}
+
+.profile-block button:last-child{
+  margin-right: 0px;
+}
+
