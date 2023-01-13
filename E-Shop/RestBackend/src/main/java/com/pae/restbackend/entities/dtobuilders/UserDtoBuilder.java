@@ -3,7 +3,7 @@ package com.pae.restbackend.entities.dtobuilders;
 import com.pae.restbackend.dto.UserDto;
 import com.pae.restbackend.entities.userdata.User;
 
-public class UserDtoBuilder extends BaseDtoBuilder<User, UserDto> {
+public class UserDtoBuilder extends AbstractDtoBuilder<User, UserDto> {
 
     public UserDtoBuilder(User user) {
         super(user, new UserDto());

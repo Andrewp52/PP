@@ -1,22 +1,22 @@
 package com.pae.restbackend.entities.dtobuilders;
 
-import com.pae.restbackend.dto.BaseDto;
-import com.pae.restbackend.entities.BaseEntity;
+import com.pae.restbackend.dto.AbstractDto;
+import com.pae.restbackend.entities.AbstractEntity;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public abstract class BaseDtoBuilder <E extends BaseEntity, D extends BaseDto> {
+public abstract class AbstractDtoBuilder<E extends AbstractEntity, D extends AbstractDto> {
     protected E entity;
     protected D dto;
 
-    public BaseDtoBuilder(E entity, D dto) {
+    public AbstractDtoBuilder(E entity, D dto) {
         this.entity = entity;
         this.dto = dto;
         setBaseDtoData();
     }
 
-    protected Set<BaseDto> withNestedSet(Set<? extends BaseEntity> collection){
+    protected Set<AbstractDto> withNestedSet(Set<? extends AbstractEntity> collection){
         if(collection == null){
             return null;
         }

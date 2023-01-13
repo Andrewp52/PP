@@ -1,6 +1,5 @@
 package com.pae.restbackend.dto;
 
-import com.pae.restbackend.entities.userdata.User;
 import lombok.*;
 
 import java.util.Objects;
@@ -14,10 +13,11 @@ public class UserDto extends ToggleableDto{
     private String userName;
     private String firstName;
     private String lastName;
+    private String password;
 
-    private Set<BaseDto> phones;
-    private Set<BaseDto> roles;
-    private Set<BaseDto> addresses;
+    private Set<AbstractDto> phones;
+    private Set<AbstractDto> roles;
+    private Set<AbstractDto> addresses;
 
     @Override
     public boolean equals(Object o) {

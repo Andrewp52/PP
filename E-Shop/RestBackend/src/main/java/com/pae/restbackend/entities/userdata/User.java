@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import com.pae.restbackend.entities.ToogleableEntity;
+import com.pae.restbackend.entities.ToggleableEntity;
 import jakarta.persistence.*;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @Getter
 @Setter
-public class User extends ToogleableEntity implements UserDetails {
+public class User extends ToggleableEntity implements UserDetails {
     @Column(name = "username")
     private String userName;
     @Column(name = "firstname")
@@ -40,7 +40,7 @@ public class User extends ToogleableEntity implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),

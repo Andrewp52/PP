@@ -3,7 +3,7 @@ package com.pae.restbackend.entities.dtobuilders;
 import com.pae.restbackend.dto.RoleDto;
 import com.pae.restbackend.entities.userdata.Role;
 
-public class RoleDtoBuilder extends BaseDtoBuilder<Role, RoleDto> {
+public class RoleDtoBuilder extends AbstractDtoBuilder<Role, RoleDto> {
     public RoleDtoBuilder(Role entity) {
         super(entity, new RoleDto());
         super.dto.setRole(super.entity.getRole());

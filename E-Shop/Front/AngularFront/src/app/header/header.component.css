@@ -4,11 +4,18 @@
   align-items: center;
   justify-content: space-between;
 }
-.profile-block button{
+.end-buttons-block{
+  display: flex;
+  align-items: center;
+}
+.end-buttons-block button:first-child{
+  margin-right: 25px;
+}
+.end-buttons-block button{
   margin-right: 10px;
 }
 
-.profile-block button:last-child{
+.end-buttons-block button:last-child{
   margin-right: 0px;
 }
 

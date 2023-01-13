@@ -6,13 +6,48 @@
           <span>E-Shop</span>
         </div>
         <div class="nav-buttons-block">
-          <button mat-flat-button color="primary">Home</button>
-          <button mat-flat-button color="primary">Catalog</button>
-          <button mat-flat-button color="primary">About</button>
+          <span *ngIf="isLoggedIn && isAdmin">
+            <button mat-flat-button color="primary" routerLink="admin">Admin</button>
+          </span>
+          <button mat-flat-button color="primary" routerLink="">Home</button>
+          <button mat-flat-button color="primary" routerLink="catalog">Catalog</button>
+          <button mat-flat-button color="primary" routerLink="about">About</button>
         </div>
-        <div class="profile-block">
-          <button mat-flat-button color="warn">Log in</button>
-          <button mat-flat-button >Sign up</button>
+        <div class="end-buttons-block">
+          <button mat-mini-fab color="primary">
+            <mat-icon>shopping_cart</mat-icon>
+          </button>
+          <div *ngIf="isLoggedIn; then loggedIn else notLoggedIn"></div>
+          <ng-template #loggedIn>
+            <button mat-mini-fab [matMenuTriggerFor]="menu" color="warn">
+              <mat-icon>person</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>person</mat-icon>
+                <span>Profile</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>shopping_bag</mat-icon>
+                <span>Orders</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>mail</mat-icon>
+                <span>Messages</span>
+              </button>
+              <mat-divider></mat-divider>
+              <button mat-menu-item (click)="logoff()">
+                <mat-icon>logout</mat-icon>
+                <span>Log out</span>
+              </button>
+            </mat-menu>
+
+          </ng-template>
+          <ng-template #notLoggedIn>
+            <button mat-flat-button color="warn" (click)="loginDialogOpen()">Log in</button>
+            <button mat-flat-button (click)="signupDialogOpen()">Sign up</button>
+          </ng-template>
+
         </div>
 
 

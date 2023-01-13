@@ -9,10 +9,10 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RoleDto extends BaseDto {
+public class RoleDto extends AbstractDto {
     private String role;
     private String description;
-    private Set<BaseDto> users;
+    private Set<AbstractDto> users;
 
     @Override
     public boolean equals(Object o) {

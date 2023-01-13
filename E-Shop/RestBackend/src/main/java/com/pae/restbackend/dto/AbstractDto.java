@@ -12,7 +12,7 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class BaseDto {
+public abstract class AbstractDto {
     private Long id;
     private LocalDateTime created;
     private LocalDateTime modified;
@@ -21,8 +21,8 @@ public abstract class BaseDto {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BaseDto baseDto = (BaseDto) o;
-        return Objects.equals(id, baseDto.id) && Objects.equals(created, baseDto.created) && Objects.equals(modified, baseDto.modified);
+        AbstractDto abstractDto = (AbstractDto) o;
+        return Objects.equals(id, abstractDto.id) && Objects.equals(created, abstractDto.created) && Objects.equals(modified, abstractDto.modified);
     }
 
     @Override

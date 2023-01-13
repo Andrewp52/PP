@@ -1,7 +1,6 @@
 package com.pae.restbackend.entities;
 
-import com.pae.restbackend.dto.BaseDto;
-import com.pae.restbackend.entities.dtobuilders.BaseDtoBuilder;
+import com.pae.restbackend.entities.dtobuilders.AbstractDtoBuilder;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,7 +18,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Getter
 @Setter
-public abstract class BaseEntity {
+public abstract class AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,7 +33,7 @@ public abstract class BaseEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BaseEntity that = (BaseEntity) o;
+        AbstractEntity that = (AbstractEntity) o;
         return id.equals(that.id) && created.equals(that.created) && modified.equals(that.modified);
     }
 
@@ -43,5 +42,5 @@ public abstract class BaseEntity {
         return Objects.hash(id, created, modified);
     }
 
-    public abstract BaseDtoBuilder dtoBuilder();
+    public abstract AbstractDtoBuilder dtoBuilder();
 }

@@ -10,10 +10,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class HttpSecurityConfig {
     @Autowired
     private AuthTokenFilter filter;
@@ -21,16 +23,17 @@ public class HttpSecurityConfig {
     @Bean
     SecurityFilterChain getHttpSecFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors()
-                .and()
-                .csrf().disable().authorizeHttpRequests()
+                .cors().and().csrf().disable()
+                .authorizeHttpRequests()
                 .requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/admin/**").hasAnyRole("ADMIN")
                 .requestMatchers("/users/**").hasAnyRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
 //        http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }

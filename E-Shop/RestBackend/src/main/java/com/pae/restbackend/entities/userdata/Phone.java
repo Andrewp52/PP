@@ -1,9 +1,6 @@
 package com.pae.restbackend.entities.userdata;
 
-import com.pae.restbackend.dto.BaseDto;
-import com.pae.restbackend.dto.PhoneDto;
-import com.pae.restbackend.entities.BaseEntity;
-import com.pae.restbackend.entities.dtobuilders.BaseDtoBuilder;
+import com.pae.restbackend.entities.AbstractEntity;
 import com.pae.restbackend.entities.dtobuilders.PhoneDtoBuilder;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -16,7 +13,7 @@ import java.util.Set;
 @Table(name = "phones")
 @Getter
 @Setter
-public class Phone extends BaseEntity {
+public class Phone extends AbstractEntity {
     @Column(name = "phone")
     private String phone;
 

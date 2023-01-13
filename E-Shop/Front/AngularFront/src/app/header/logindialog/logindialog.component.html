@@ -1,0 +1,15 @@
+<div>
+  <div [formGroup]="myGroup" class="form-container">
+    <mat-form-field appearance="outline">
+      <mat-label>UserName</mat-label>
+      <input matInput name="userName" formControlName="userName"/>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput name="password" formControlName="password"/>
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="proceed()">Log in</button>
+  </div>
+</div>
+
+

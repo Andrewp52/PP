@@ -12,13 +12,13 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddressDto extends BaseDto{
+public class AddressDto extends AbstractDto {
     private String city;
     private String street;
     private String building;
     private String aptOffice;
 
-    private Set<BaseDto> users;
+    private Set<AbstractDto> users;
 
     @Override
     public boolean equals(Object o) {

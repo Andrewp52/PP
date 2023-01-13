@@ -1,6 +1,6 @@
 package com.pae.restbackend.entities.userdata;
 
-import com.pae.restbackend.entities.BaseEntity;
+import com.pae.restbackend.entities.AbstractEntity;
 import com.pae.restbackend.entities.dtobuilders.RoleDtoBuilder;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import java.util.Set;
 @Table(name = "roles")
 @Getter
 @Setter
-public class Role extends BaseEntity {
+public class Role extends AbstractEntity {
     @Column(name = "role")
     private String role;
     @Column(name = "description")

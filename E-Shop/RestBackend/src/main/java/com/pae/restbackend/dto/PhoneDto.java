@@ -11,7 +11,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PhoneDto extends BaseDto{
+public class PhoneDto extends AbstractDto {
     private String phone;
-    private Set<BaseDto> users;
+    private Set<AbstractDto> users;
 }

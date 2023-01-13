@@ -1,16 +1,16 @@
 package com.pae.restbackend.services;
 
-import com.pae.restbackend.dto.BaseDto;
-import com.pae.restbackend.entities.BaseEntity;
+import com.pae.restbackend.dto.AbstractDto;
+import com.pae.restbackend.entities.AbstractEntity;
 import com.pae.restbackend.exceptions.EntityNotFoundException;
 import com.pae.restbackend.exceptions.NewEntityIdIsNotNullException;
 import com.pae.restbackend.repositories.BaseRepository;
 
 
-public abstract class BaseService <E extends BaseEntity, I> {
+public abstract class AbstractService<E extends AbstractEntity, I> {
     protected final BaseRepository<E, I> repository;
 
-    public BaseService(BaseRepository<E, I> repository) {
+    public AbstractService(BaseRepository<E, I> repository) {
         this.repository = repository;
     }
 
@@ -35,5 +35,5 @@ public abstract class BaseService <E extends BaseEntity, I> {
         }
     }
 
-    public abstract E update(BaseDto dto);
+    public abstract E update(AbstractDto dto);
 }
