@@ -26,7 +26,7 @@ export class AuthService {
           this.storageService.saveUser(value);
           observer.next(value);
         }, error: err => {
-          observer.error(err);
+          observer.error(err.status);
         }
       })
     })

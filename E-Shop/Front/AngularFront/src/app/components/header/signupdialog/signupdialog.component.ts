@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {SignupRequest} from "../../interfaces/signup-request";
+import {SignupRequest} from "../../../interfaces/signup-request";
 import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({

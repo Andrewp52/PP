@@ -4,6 +4,14 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.admin-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .end-buttons-block{
   display: flex;
   align-items: center;

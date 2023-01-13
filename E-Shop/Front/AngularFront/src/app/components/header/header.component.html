@@ -1,20 +1,20 @@
 
   <mat-toolbar color="primary">
+    <section>
     <mat-toolbar-row class="toolbar-container">
-
         <div class="unselectable-item">
           <span>E-Shop</span>
         </div>
         <div class="nav-buttons-block">
           <span *ngIf="isLoggedIn && isAdmin">
-            <button mat-flat-button color="primary" routerLink="admin">Admin</button>
+            <button mat-flat-button color="primary" (click)="toggleAdminPanel()">Admin</button>
           </span>
           <button mat-flat-button color="primary" routerLink="">Home</button>
           <button mat-flat-button color="primary" routerLink="catalog">Catalog</button>
           <button mat-flat-button color="primary" routerLink="about">About</button>
         </div>
         <div class="end-buttons-block">
-          <button mat-mini-fab color="primary">
+          <button mat-mini-fab color="primary" routerLink="cart">
             <mat-icon>shopping_cart</mat-icon>
           </button>
           <div *ngIf="isLoggedIn; then loggedIn else notLoggedIn"></div>
@@ -23,20 +23,20 @@
               <mat-icon>person</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item>
+              <button mat-menu-item routerLink="/users/profile">
                 <mat-icon>person</mat-icon>
                 <span>Profile</span>
               </button>
-              <button mat-menu-item>
+              <button mat-menu-item routerLink="/users/orders">
                 <mat-icon>shopping_bag</mat-icon>
                 <span>Orders</span>
               </button>
-              <button mat-menu-item>
+              <button mat-menu-item routerLink="/users/messages">
                 <mat-icon>mail</mat-icon>
                 <span>Messages</span>
               </button>
               <mat-divider></mat-divider>
-              <button mat-menu-item (click)="logoff()">
+              <button mat-menu-item (click)="logout()">
                 <mat-icon>logout</mat-icon>
                 <span>Log out</span>
               </button>
@@ -47,10 +47,19 @@
             <button mat-flat-button color="warn" (click)="loginDialogOpen()">Log in</button>
             <button mat-flat-button (click)="signupDialogOpen()">Sign up</button>
           </ng-template>
-
         </div>
-
-
     </mat-toolbar-row>
+    </section>
+    <section *ngIf="adminPanelActive">
+      <mat-toolbar-row class="admin-container">
+        <button mat-flat-button color="primary" routerLink="/admin/dashboard">Dashboard</button>
+        <button mat-flat-button color="primary" routerLink="/admin/orders">Orders</button>
+        <button mat-flat-button color="primary" routerLink="/admin/messages">Messages</button>
+        <button mat-flat-button color="primary" routerLink="/admin/catalog">Catalog</button>
+        <button mat-flat-button color="primary" routerLink="/admin/users">Users</button>
+        <button mat-flat-button color="primary" routerLink="/admin/roles">Roles</button>
+        <button mat-flat-button color="primary" routerLink="/admin/addresses">Addresses</button>
+      </mat-toolbar-row>
+    </section>
   </mat-toolbar>
 
