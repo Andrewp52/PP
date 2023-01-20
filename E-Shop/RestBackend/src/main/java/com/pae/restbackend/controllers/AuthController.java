@@ -4,7 +4,6 @@ import com.pae.restbackend.config.security.jwt.JWTUtils;
 import com.pae.restbackend.dto.AbstractDto;
 import com.pae.restbackend.dto.LoginRequest;
 import com.pae.restbackend.dto.UserDto;
-import com.pae.restbackend.entities.entityfactories.EntityFactory;
 import com.pae.restbackend.entities.userdata.User;
 import com.pae.restbackend.exceptions.NewEntityIdIsNotNullException;
 import com.pae.restbackend.services.UserService;

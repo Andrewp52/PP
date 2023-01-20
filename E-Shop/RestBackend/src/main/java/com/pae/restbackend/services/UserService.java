@@ -27,20 +27,10 @@ import java.util.HashSet;
 @Service
 public class UserService extends AbstractService<User, Long> implements UserDetailsService {
     private final PasswordEncoder passwordEncoder;
-    private final AbstractService<Role, Long> roleService;
-    private final AbstractService<Phone, Long> phoneService;
-    private final AbstractService<Address, Long> addressService;
     @Autowired
-    public UserService(BaseRepository<User, Long> repository,
-                       PasswordEncoder passwordEncoder,
-                       AbstractService<Role, Long> roleService,
-                       AbstractService<Phone, Long> phoneService,
-                       EntityFactory<User> factory, AbstractService<Address, Long> addressService) {
+    public UserService(BaseRepository<User, Long> repository, PasswordEncoder passwordEncoder, EntityFactory<User> factory) {
         super(repository, factory);
         this.passwordEncoder = passwordEncoder;
-        this.roleService = roleService;
-        this.phoneService = phoneService;
-        this.addressService = addressService;
     }
 
     @Override
@@ -83,13 +73,14 @@ public class UserService extends AbstractService<User, Long> implements UserDeta
         if(dto.getPhone() == null || dto.getPhone().isEmpty()){
             throw new PhoneNumberEmptyException();
         }
+        PhoneService ps = (PhoneService) MyServiceContext.getService(PhoneService.class);
         User u = this.findById(userId);
         Phone toUpdate = u.getPhones().stream()
                 .filter(p -> p.getId().equals(dto.getId()))
                 .findFirst()
                 .orElseThrow(EntityNotFoundException::new);
         if(!toUpdate.getPhone().equals(dto.getPhone())){
-            Phone p = ((PhoneService)phoneService).findOrCreate(dto);
+            Phone p = ps.findOrCreate(dto);
             u.getPhones().remove(toUpdate);
             u.getPhones().add(p);
             repository.save(u);
@@ -109,11 +100,12 @@ public class UserService extends AbstractService<User, Long> implements UserDeta
         if(dto.getPhone() == null || dto.getPhone().isEmpty()){
             throw new PhoneNumberEmptyException();
         }
+        PhoneService ps = (PhoneService) MyServiceContext.getService(PhoneService.class);
         if(dto.getId() != null){
             throw new NewEntityIdIsNotNullException();
         }
         User user = this.findById(userId);
-        Phone phone = ((PhoneService)phoneService).findOrCreate(dto);
+        Phone phone = ps.findOrCreate(dto);
         if(user.getPhones() == null){
             user.setPhones(new HashSet<>());
         }
@@ -126,8 +118,9 @@ public class UserService extends AbstractService<User, Long> implements UserDeta
         if(dto.getId() != null){
             throw new NewEntityIdIsNotNullException();
         }
+        AddressService as = (AddressService) MyServiceContext.getService(AddressService.class);
         User user = this.findById(userId);
-        Address addr = ((AddressService)addressService).findOrCreate(dto);
+        Address addr = as.findOrCreate(dto);
         if(user.getPhones() == null){
             user.setAddresses(new HashSet<>());
         }
@@ -148,12 +141,13 @@ public class UserService extends AbstractService<User, Long> implements UserDeta
             throw new UpdatableEntityIdIsNullException();
         }
         User u = this.findById(userId);
+        AddressService as = (AddressService) MyServiceContext.getService(AddressService.class);
         Address toUpdate = u.getAddresses().stream()
                 .filter( a-> a.getId().equals(dto.getId()))
                 .findFirst()
                 .orElseThrow(EntityNotFoundException::new);
         if(isAddressChanged(toUpdate, dto)){
-            Address a = ((AddressService)addressService).findOrCreate(dto);
+            Address a = as.findOrCreate(dto);
             u.getAddresses().remove(toUpdate);
             u.getAddresses().add(a);
             repository.save(u);
@@ -165,7 +159,7 @@ public class UserService extends AbstractService<User, Long> implements UserDeta
     private User prepareNewUser(User u){
         u.setPassword(passwordEncoder.encode(u.getPassword()));
         u.setEnabled(true);
-        Role r = ((RoleService)roleService).findByRole("USER");
+        Role r = ((RoleService)MyServiceContext.getService(RoleService.class)).findByRole("USER");
         u.setRoles(new HashSet<>());
         u.getRoles().add(r);
         return u;
@@ -176,6 +170,7 @@ public class UserService extends AbstractService<User, Long> implements UserDeta
         return prepareNewUser(u);
     }
 
+    // TODO: Fix null fields (front dto classes)
     private boolean isAddressChanged(Address a, AddressDto dto){
         return !(
 //                a.getRegion().equals(dto.getRegion())
