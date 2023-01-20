@@ -6,6 +6,8 @@ import com.pae.restbackend.entities.userdata.Address;
 public class AddressDtoBuilder extends AbstractDtoBuilder<Address, AddressDto> {
     public AddressDtoBuilder(Address entity) {
         super(entity, new AddressDto());
+        super.dto.setRegion(entity.getRegion());
+        super.dto.setArea(entity.getArea());
         super.dto.setCity(super.entity.getCity());
         super.dto.setStreet(super.entity.getStreet());
         super.dto.setBuilding(super.entity.getBuilding());

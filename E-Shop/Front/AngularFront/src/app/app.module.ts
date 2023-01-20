@@ -36,6 +36,11 @@ import { CatalogAdminComponent} from "./components/authenticated/admin/catalog-a
 import { OrdersAdminComponent } from './components/authenticated/admin/orders-admin/orders-admin.component';
 import { MessagesAdminComponent } from './components/authenticated/admin/messages-admin/messages-admin.component';
 import { DashBoardComponent } from './components/authenticated/admin/dash-board/dash-board.component';
+import { AddressDialogComponent } from './components/authenticated/user/profile/address-dialog/address-dialog.component';
+import { PhoneDialogComponent } from './components/authenticated/user/profile/phone-dialog/phone-dialog.component';
+import { MainDataDialogComponent } from './components/authenticated/user/profile/main-data-dialog/main-data-dialog.component';
+import { ChangePasswordDialogComponent } from './components/authenticated/user/profile/change-password-dialog/change-password-dialog.component';
+import { DeleteConfirmDialogComponent } from './components/authenticated/user/profile/delete-confirm-dialog/delete-confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +64,12 @@ import { DashBoardComponent } from './components/authenticated/admin/dash-board/
     CatalogAdminComponent,
     OrdersAdminComponent,
     MessagesAdminComponent,
-    DashBoardComponent
+    DashBoardComponent,
+    AddressDialogComponent,
+    PhoneDialogComponent,
+    MainDataDialogComponent,
+    ChangePasswordDialogComponent,
+    DeleteConfirmDialogComponent
   ],
   imports: [
     BrowserModule,

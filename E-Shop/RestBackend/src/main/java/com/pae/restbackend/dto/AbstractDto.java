@@ -29,4 +29,5 @@ public abstract class AbstractDto {
     public int hashCode() {
         return Objects.hash(id, created, modified);
     }
+
 }

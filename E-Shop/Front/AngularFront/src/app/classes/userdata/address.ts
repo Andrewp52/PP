@@ -1,6 +1,6 @@
 import {AbstractEntity} from "../abstract-entity";
 
-export class Address {
+export class Address extends AbstractEntity{
   city: string | undefined
   street: string | undefined
   building: string | undefined

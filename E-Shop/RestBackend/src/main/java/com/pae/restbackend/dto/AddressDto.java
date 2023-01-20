@@ -13,6 +13,8 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddressDto extends AbstractDto {
+    private String region;
+    private String area;
     private String city;
     private String street;
     private String building;

@@ -31,7 +31,6 @@ public class AuthController {
     private final JWTUtils jwtUtils;
     private final AuthenticationManager authenticationManager;
     private final UserService userService;
-    private final EntityFactory<User> userFactory;
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -53,7 +52,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public AbstractDto registerNewUser(@RequestBody(required = true) UserDto dto){
-        User registered = userService.addNew(userFactory.getEntity(dto));
+        User registered = userService.addNew(dto);
         return registered.dtoBuilder().build();
     }
 

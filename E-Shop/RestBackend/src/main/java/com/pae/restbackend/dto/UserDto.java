@@ -33,4 +33,6 @@ public class UserDto extends ToggleableDto{
         return Objects.hash(super.hashCode(), userName, firstName, lastName);
     }
 
+
+
 }

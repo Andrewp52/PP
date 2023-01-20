@@ -1,0 +1,43 @@
+.container{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.card{
+  /*margin-right: 50px;*/
+  margin-bottom: 50px;
+  width: 32rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 5px 10px gray;
+}
+
+.end-buttons-block{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.card-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  background: aliceblue;
+  margin-bottom: 15px;
+}
+.row{
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.row.centered-button{
+  justify-content: center;
+}

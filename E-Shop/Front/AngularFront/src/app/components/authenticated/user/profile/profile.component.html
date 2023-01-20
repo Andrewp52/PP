@@ -1,1 +1,70 @@
-<p>profile works!</p>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <span>Main data</span>
+    </div>
+    <div class="row">
+      <span>E-mail</span>
+      <span>{{user?.userName}}</span>
+    </div>
+    <div class="row">
+      <span>First name</span>
+      <span>{{user?.firstName}}</span>
+    </div>
+    <div class="row">
+      <span>Last name</span>
+      <span>{{user?.lastName}}</span>
+    </div>
+    <div class="row">
+      <span>Registered at</span>
+      <span>{{user?.created}}</span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="row"></div>
+    <div class="row">
+      <button mat-flat-button color="primary" (click)="editMainData()">Edit main data</button>
+      <button mat-flat-button color="primary" (click)="changePassword()">Change password</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <span>Phones</span>
+    </div>
+    <div *ngFor="let phone of user?.phones; index as i" class="row">
+      <div>{{i + 1}}</div>
+
+      <div class="end-buttons-block">
+        <div>{{phone.phone}}</div>
+        <button mat-icon-button color="primary" (click)="editPhone(i)"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button (click)="deletePhone(i)"><mat-icon color="accent">delete</mat-icon></button>
+      </div>
+    </div>
+    <mat-divider> </mat-divider>
+    <div class="row"></div>
+    <div class="row centered-button">
+      <button mat-flat-button color="primary" (click)="addNewPhone()">Add new phone</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span>Addresses</span>
+    </div>
+    <div *ngFor="let addr of user?.addresses; index as i" class="row">
+      <div>{{i + 1}}</div>
+      <div class="end-buttons-block">
+        <div>{{addr.city + ' ' + addr.street + ' ' + addr.building + ' ' + addr.aptOffice}}</div>
+        <button mat-icon-button color="primary" (click)="editAddress(i)"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button (click)="deleteAddress(i)"><mat-icon color="accent">delete</mat-icon></button>
+      </div>
+    </div>
+    <mat-divider> </mat-divider>
+    <div class="row"></div>
+    <div class="row centered-button">
+      <button mat-flat-button color="primary" (click)="addNewAddress()">Add new address</button>
+    </div>
+
+  </div>
+
+
+</div>

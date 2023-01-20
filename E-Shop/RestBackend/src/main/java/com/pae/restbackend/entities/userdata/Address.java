@@ -14,6 +14,11 @@ import java.util.Set;
 @Getter
 @Setter
 public class Address extends AbstractEntity {
+    @Column(name = "region")
+    private String region;
+
+    @Column(name = "area")
+    private String area;
     @Column(name = "city")
     private String city;
     @Column(name = "street")

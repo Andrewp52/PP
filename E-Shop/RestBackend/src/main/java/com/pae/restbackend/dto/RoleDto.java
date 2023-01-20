@@ -28,4 +28,6 @@ public class RoleDto extends AbstractDto {
         return Objects.hash(super.hashCode(), role, description);
     }
 
+
+
 }

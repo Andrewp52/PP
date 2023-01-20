@@ -7,5 +7,5 @@ import java.util.Optional;
 
 @Repository
 public interface AddressRepository extends BaseRepository<Address, Long> {
-    Optional<Address> findByCityAndStreetAndBuildingAndAptOffice(String city, String street, String build, String apt);
+    Optional<Address> findByRegionAndAreaAndCityAndStreetAndBuildingAndAptOffice(String reg, String area, String city, String street, String build, String apt);
 }

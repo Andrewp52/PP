@@ -8,6 +8,8 @@ export const Globals = Object.freeze({
   CATALOG: '/catalog',
 
   USERS: '/users',
+  PHONE: '/phone',
+  ADDRESS: '/address',
   ADMIN: {
     USERS: '/admin/users',
     ORDERS: '/admin/orders',

@@ -4,6 +4,7 @@ import {LogindialogComponent} from "./logindialog/logindialog.component";
 import {SignupdialogComponent} from "./signupdialog/signupdialog.component";
 import {AuthService} from "../../services/backend/auth.service";
 import {Router} from "@angular/router";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,9 @@ export class HeaderComponent implements OnInit{
   adminPanelActive: boolean = false;
   isLoggedIn: boolean = false;
   loginError: any
+  searchGroup: FormGroup = new FormGroup<any>({
+    keyword: new FormControl('')
+  });
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
@@ -75,5 +79,9 @@ export class HeaderComponent implements OnInit{
 
   toggleAdminPanel() {
     this.adminPanelActive = !this.adminPanelActive;
+  }
+
+  search() {
+    console.log(this.searchGroup.get('keyword')?.value)
   }
 }

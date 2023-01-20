@@ -26,3 +26,8 @@ jwt:
   secret: "secr3t"
   expirationMs: 180 000 000
   cookieName: "apiCook"
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

@@ -18,6 +18,7 @@ import {OrdersAdminComponent} from "./components/authenticated/admin/orders-admi
 import {MessagesAdminComponent} from "./components/authenticated/admin/messages-admin/messages-admin.component";
 import {CatalogAdminComponent} from "./components/authenticated/admin/catalog-admin/catalog-admin.component";
 import {DashBoardComponent} from "./components/authenticated/admin/dash-board/dash-board.component";
+import {ProfileResolver} from "./resolvers/profile.resolver";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,7 +27,7 @@ const routes: Routes = [
   { path: 'catalog', component: CatalogComponent },
   { path: 'cart', component: CartComponent },
   { path: 'users', children: [
-      {path: 'profile', component: ProfileComponent},
+      {path: 'profile', component: ProfileComponent, resolve: { user: ProfileResolver } },
       {path: 'orders', component: OrdersComponent},
       {path: 'messages', component: MessagesComponent}
     ]

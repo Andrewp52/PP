@@ -25,9 +25,10 @@ public class HttpSecurityConfig {
         http
                 .cors().and().csrf().disable()
                 .authorizeHttpRequests()
+                .requestMatchers("/error").permitAll()
                 .requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/admin/**").hasAnyRole("ADMIN")
-                .requestMatchers("/users/**").hasAnyRole("USER")
+//                .requestMatchers("/users/**").hasAnyRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
